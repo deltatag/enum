@@ -14,7 +14,10 @@ abstract class Enum
 {
 	use ConstantsTrait;
 
-	private $value = null;
+	/**
+	 * @var mixed
+	 */
+	private $value;
 
 	/**
 	 * EnumBaseClass constructor. Set to private to prevent instantiation
