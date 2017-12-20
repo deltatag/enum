@@ -1,0 +1,13 @@
+<?php
+
+namespace Deltatag\Enum\Exceptions;
+
+/**
+ * Class EnumValueNotAllowedException
+ *
+ * @package Deltatag\Enum\Exceptions
+ */
+class EnumValueNotAllowedException extends \Exception
+{
+	protected $message = 'Enum value not allowed.';
+}
