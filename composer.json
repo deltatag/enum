@@ -1,0 +1,32 @@
+{
+  "name": "deltatag/enum",
+  "type": "library",
+  "description": "This package provides features for working with enums",
+  "keywords": [
+    "enum",
+    "deltatag"
+  ],
+  "homepage": "https://www.deltatag.at",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Deltatag",
+      "homepage": "https://www.deltatag.at",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "~7.0"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Deltatag\\Enum\\": "src/"
+    },
+    "classmap": [
+      "src/",
+      "tests/"
+    ]
+  }
+}
