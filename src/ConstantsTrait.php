@@ -29,9 +29,6 @@ trait ConstantsTrait
 	 */
 	public static function isValid($value)
 	{
-		if (!in_array($value, static::getConstants())) {
-			return false;
-		}
-		return true;
+		return in_array($value, static::getConstants());
 	}
 }
