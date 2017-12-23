@@ -1,8 +1,8 @@
 # Enumerations for PHP
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/deltatag/enum/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/deltatag/enum/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/deltatag/enum.svg?style=flat-square)](https://packagist.org/packages/sentry/sentry)
-[![Downloads per month](https://img.shields.io/packagist/dm/deltatag/enum.svg?style=flat-square)](https://packagist.org/packages/sentry/sentry)
-[![Issues open](https://img.shields.io/packagist/dt/deltatag/enum.svg?style=flat-square)](https://packagist.org/packages/sentry/sentry)
+[![Build Status](https://scrutinizer-ci.com/g/deltatag/enum/badges/build.png?b=master)](https://scrutinizer-ci.com/g/deltatag/enum/build-status/master)
 [![Latest stable version](https://img.shields.io/packagist/v/deltatag/enum.svg?style=flat-square)](https://packagist.org/packages/sentry/sentry)
 [![License](http://img.shields.io/github/license/deltatag/enum.svg?style=flat-square)](https://packagist.org/packages/deltatag/enum)
 
@@ -10,9 +10,14 @@ The enumeration package provides easy usage of enumerations.
 
 ## Features
 
-- `TODO`
+- Direct usage of enum class for validation
+- Validate enum values with **isValid()**
+- Fetch all enum values with **getContants()**
+- Define default value for enum with constant `__default`
 
 ## Usage
+
+Simply define an enum class of your need and use it for validation.
 
 ```php
 // Create new enumeration class which extends Enum base class
@@ -27,6 +32,24 @@ class Fruits extends Deltatag\Enum\Enum
 	const BANANA = '4';
 }
 
+// check for constant
+
+Fruits::isValid(Fruits::BANANA); // returns true
+
+
+// check for value
+
+Fruits::isValid('1'); // returns true
+
+Fruits::isValid('Potato') // returns false
+
+// get all values of enumeration
+$enumValues = Fruits::getConstants();
+```
+
+For object oriented usage you can also use the enum object itself.
+
+```php
 // use enumeration class
 $apple = new Fruits(Fruits::APPLE);
 
