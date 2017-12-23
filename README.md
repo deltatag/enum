@@ -1,19 +1,19 @@
 # Enumerations for PHP
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/deltatag/enum/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/deltatag/enum/?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/deltatag/enum.svg?style=flat-square)](https://packagist.org/packages/sentry/sentry)
+[![Total Downloads](https://img.shields.io/packagist/dt/deltatag/enum.svg?style=flat-square)](https://packagist.org/packages/deltatag/enum)
 [![Build Status](https://scrutinizer-ci.com/g/deltatag/enum/badges/build.png?b=master)](https://scrutinizer-ci.com/g/deltatag/enum/build-status/master)
-[![Latest stable version](https://img.shields.io/packagist/v/deltatag/enum.svg?style=flat-square)](https://packagist.org/packages/sentry/sentry)
+[![Latest stable version](https://img.shields.io/packagist/v/deltatag/enum.svg?style=flat-square)](https://packagist.org/packages/deltatag/enum)
 [![License](http://img.shields.io/github/license/deltatag/enum.svg?style=flat-square)](https://packagist.org/packages/deltatag/enum)
 
 The enumeration package provides easy usage of enumerations.
 
 ## Features
 
-- Direct usage of enum class for validation
+- Direct usage of enum class for validation and parameterisation
 - Validate enum values with **isValid()**
 - Fetch all enum values with **getContants()**
-- Define default value for enum with constant `__default`
+- Define default value for enum with constant **`__default`**
 
 ## Usage
 
