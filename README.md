@@ -21,7 +21,7 @@ composer require deltatag/enum
 * ``__construct()`` The constructor check if given value is in the enumeration or simply use defined default value. If value not allowed a **EnumValueNotAllowedException** will be thrown.
 * ``__toString()`` You can directly output the enum object or check against value
 * ``getValue()`` Get the current value of the enum object
-* ``equal()`` Compare one instance of enum to another
+* ``isEqual()`` Compare one instance of enum to another
 
 #### Static methods:
 

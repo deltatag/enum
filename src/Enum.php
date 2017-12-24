@@ -28,11 +28,12 @@ abstract class Enum implements IEnum
 	 */
 	public function __construct($value = null)
 	{
-		if (is_null($value) && !array_key_exists('__default', self::getConstants())) {
-			throw new EnumDefaultNotDefinedException();
-		}
-		if (is_null($value) && array_key_exists('__default', self::getConstants())) {
-			$value = self::getConstants()['__default'];
+		if (is_null($value)) {
+			if(!array_key_exists('__default', self::getConstants())) {
+				throw new EnumDefaultNotDefinedException();
+			} else {
+				$value = self::getConstants()['__default'];
+			}
 		}
 		if (!self::isValid($value)) {
 			throw new EnumValueNotAllowedException();
@@ -78,7 +79,7 @@ abstract class Enum implements IEnum
 	 * @param IEnum $enumCompare
 	 * @return bool
 	 */
-	public function equal(IEnum $enumCompare): bool
+	public function isEqual(IEnum $enumCompare): bool
 	{
 		/** @noinspection PhpNonStrictObjectEqualityInspection */
 		return $this == $enumCompare;
