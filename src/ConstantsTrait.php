@@ -22,6 +22,16 @@ trait ConstantsTrait
 	}
 
 	/**
+	 * Helper for getConstants()
+	 *
+	 * @return array
+	 */
+	public static function toArray()
+	{
+		return self::getConstants();
+	}
+
+	/**
 	 * Check if given value is valid value
 	 *
 	 * @param mixed $value

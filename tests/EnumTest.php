@@ -27,6 +27,10 @@ class EnumTest extends \PHPUnit_Framework_TestCase
 		} catch (\Exception $e) {
 			$this->assertTrue(false, 'Construct with default should not fail');
 		}
+
+		$enumDefault = new DefaultEnumClass();
+
+		$this->assertSame(DefaultEnumClass::__default, $enumDefault->getValue());
 	}
 
 	/**
@@ -71,5 +75,14 @@ class EnumTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue(DefaultEnumClass::isValid(DefaultEnumClass::ONE));
 		$this->assertTrue(DefaultEnumClass::isValid('1'));
 		$this->assertFalse(DefaultEnumClass::isValid('4'));
+	}
+
+	public function testEquals()
+	{
+		$enum = new DefaultEnumClass();
+		$enumEqual = new DefaultEnumClass();
+		$enumNotEqual = new DefaultEnumClass(DefaultEnumClass::TWO);
+		$this->assertTrue($enum->equal($enumEqual));
+		$this->assertFalse($enum->equal($enumNotEqual));
 	}
 }

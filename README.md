@@ -8,12 +8,29 @@
 
 The enumeration package provides easy usage of enumerations.
 
-## Features
+The enum features are similar to ``SplEnum``, but without installation of an additional PHP package. It provides convenient features to speed up the implementation enumerations to your application.
 
-- Direct usage of enum class for validation and parameterisation
-- Validate enum values with **isValid()**
-- Fetch all enum values with **getContants()**
-- Define default value for enum with constant **`__default`**
+## Installation
+
+```
+composer require deltatag/enum
+```
+
+#### Object methods:
+
+* ``__construct()`` The constructor check if given value is in the enumeration or simply use defined default value. If value not allowed a **EnumValueNotAllowedException** will be thrown.
+* ``__toString()`` You can directly output the enum object or check against value
+* ``getValue()`` Get the current value of the enum object
+* ``equal()`` Compare one instance of enum to another
+
+#### Static methods:
+
+* ``getConstants()`` Returns all possible values for enumeration with constant name as key
+* ``getDefault()`` Get default enum value is set. Constant key must be **__default**. If no default value was defined a **EnumDefaultValueNotDefinedException** will be thrown.
+* ``toArray()`` Wrapper for method getConstants()
+* ``isValid()`` Check if value is valid enum value
+
+For general constant methods you can use the ``ConstantsTrait``.
 
 ## Usage
 
@@ -47,7 +64,7 @@ Fruits::isValid('Potato') // returns false
 $enumValues = Fruits::getConstants();
 ```
 
-For object oriented usage you can also use the enum object itself.
+For object oriented usage you can also use the enum object itself for type-hinting.
 
 ```php
 // use enumeration class

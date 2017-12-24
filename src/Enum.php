@@ -10,7 +10,7 @@ use Deltatag\Enum\Exceptions\EnumValueNotAllowedException;
  *
  * @package Deltatag\Enum
  */
-abstract class Enum
+abstract class Enum implements IEnum
 {
 	use ConstantsTrait;
 
@@ -20,16 +20,42 @@ abstract class Enum
 	private $value;
 
 	/**
-	 * EnumBaseClass constructor. Set to private to prevent instantiation
+	 * EnumBaseClass constructor.
 	 *
-	 * @param mixed $value
+	 * @param mixed $value If no value is defined the default value (if defined) will be used.
+	 * @throws EnumDefaultNotDefinedException
 	 * @throws EnumValueNotAllowedException
 	 */
-	public function __construct($value) {
-		if(!self::isValid($value)) {
+	public function __construct($value = null)
+	{
+		if (is_null($value) && !array_key_exists('__default', self::getConstants())) {
+			throw new EnumDefaultNotDefinedException();
+		}
+		if (is_null($value) && array_key_exists('__default', self::getConstants())) {
+			$value = self::getConstants()['__default'];
+		}
+		if (!self::isValid($value)) {
 			throw new EnumValueNotAllowedException();
 		}
 		$this->value = $value;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function __toString(): string
+	{
+		return strval($this->value);
+	}
+
+	/**
+	 * Return current value
+	 *
+	 * @return mixed
+	 */
+	public function getValue()
+	{
+		return $this->value;
 	}
 
 	/**
@@ -40,17 +66,21 @@ abstract class Enum
 	 */
 	public static function getDefault()
 	{
-		if(array_key_exists('__default', self::getConstants())) {
+		if (array_key_exists('__default', self::getConstants())) {
 			return self::getConstants()['__default'];
 		}
 		throw new EnumDefaultNotDefinedException();
 	}
 
 	/**
-	 * @return string
+	 * Compare instance of enum to another enum instance and comparing values
+	 *
+	 * @param IEnum $enumCompare
+	 * @return bool
 	 */
-	public function __toString()
+	public function equal(IEnum $enumCompare): bool
 	{
-		return strval($this->value);
+		/** @noinspection PhpNonStrictObjectEqualityInspection */
+		return $this == $enumCompare;
 	}
 }
